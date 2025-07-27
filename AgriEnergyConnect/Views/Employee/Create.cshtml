@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@model AgriEnergyConnect.Models.AgriEnergyConnectUser
+
+<h2>Create New Farmer</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form asp-action="Create" method="post">
+        @* Hidden input for the authenticated user's ID and Email *@
+        <input type="hidden" asp-for="Id" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+        <input type="hidden" asp-for="UserName" value="@User.FindFirstValue(ClaimTypes.Email)" />
+
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input name="password" type="password" class="form-control" />
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg mt-4">Create</button>
+        </div>
+    </form>
+}
+else
+{
+    <p>Please <a asp-area="Identity" asp-page="/Account/Login">login</a> to create a new farmer.</p>
+}
+<a asp-action="Index">Back to List</a>
+
+<style>
+    .btn-primary {
+        font-size: 1rem; /* Standard font size */
+        padding: 0.3rem 2rem; /* Adjust padding for thinner height and longer width */
+        border-radius: 0.25rem; /* Standard border radius */
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem; /* Add margin to move the button down */
+    }
+
+    .text-center {
+        text-align: center; /* Center align the button */
+    }
+</style>

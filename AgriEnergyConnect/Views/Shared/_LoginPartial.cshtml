@@ -1,0 +1,45 @@
+@using Microsoft.AspNetCore.Identity
+@using AgriEnergyConnect.Models
+@using AgriEnergyConnect.Controllers
+@using AgriEnergyConnect.Areas
+
+
+
+@inject SignInManager<AgriEnergyConnectUser> SignInManager
+@inject UserManager<AgriEnergyConnectUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @UserManager.GetUserName(User)
+            </a>
+            <ul class=" dropdown-menu">
+                <li><a class="dropdown-item remember-me" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item remember-me" id="login" asp-area="Identity" asp-page="/Account/Logout">LogOut</a></li>
+
+            </ul>
+        </li>
+
+    }
+
+    else
+    {
+
+        <li class="nav-item dropdown" style="left: -100px;">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path fill="white" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                </svg>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item remember-me" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                <hr class="dropdown-divider" />
+                <a class="dropdown-item remember-me" id="login" asp-area="Identity" asp-page="/Account/Login">LogIn</a>
+
+            </div>
+        </li>
+    }
+</ul>

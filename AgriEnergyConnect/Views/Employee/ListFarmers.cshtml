@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AgriEnergyConnect.Models.AgriEnergyConnectUser>
+
+<h2>List of Farmers</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Farmer ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.Address</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.PasswordHash</td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

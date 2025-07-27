@@ -1,0 +1,210 @@
+body {
+    background-color: white;
+    font-family: 'WorkSans-Regular';
+}
+
+a {
+    color: #679691;
+}
+
+a:hover {
+    color: #025048;
+}
+
+.remember-me {
+    font-family: 'WorkSans-Regular';
+}
+body.index {
+        background-color: #025048;
+        background-position: center center;
+        background-size: 100%;
+    }
+.custom-bg-color {
+    background-color: #025048;
+    height: 60px;
+}
+.home-title {
+    font-family: 'WorkSans-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+.work-page {
+    background: white!important;
+}
+
+.home-page {
+    font-family: 'PlayfairDisplay';
+    color: white;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 72.6px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px
+}
+.main_header {
+    margin-right: 200px; 
+    color: white!important;
+    font-family: 'PlayfairDisplay';
+    font-size: 24px;
+}
+
+    .main_header:link,
+    .main_header:visited,
+    .main_header:hover,
+    .main_header:active {
+        color: white !important; 
+        text-decoration: none; 
+    }
+
+.main-title {
+    font-family: 'WorkSans-Regular';
+    font-size: 16px;
+    color: white!important;
+    text-decoration: none; 
+}
+
+.main-title:hover {
+        font-size: 1.2em;
+    }
+
+.btn-cancel {
+    font-family: 'PlayfairDisplay';
+    color: #679691;
+    background-color: white;
+    border: 2px solid #025048!important;
+}
+
+    .btn-cancel:hover {
+        background-color: #025048;
+        border: 2px solid #679691!important;
+        color: white;
+    }
+
+.btn-primary {
+    font-family: 'PlayfairDisplay';
+    color: white;
+    background-color: #679691;
+    border: 2px solid #025048!important;
+}
+
+    .btn-primary:hover {
+        background-color: #025048;
+        color: white;
+        border: 2px solid #679691!important;
+    }
+
+.btn-link {
+    color: #679691;
+    text-decoration-color: #679691;
+}
+
+#passwordInput, #confirmPasswordInput {
+    padding-right: 38px; /* Adjust this value to properly align the eye icon */
+    border-top-right-radius: 5px; /* Match the rounded border of the text field */
+    border-bottom-right-radius: 5px; /* Match the rounded border of the text field */
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#togglePassword, #toggleConfirmPassword {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-top-right-radius: 5px; /* Rounded border on the top-right */
+    border-bottom-right-radius: 5px; /* Rounded border on the bottom-right */
+    border: none;
+    background-color: transparent;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px; /* Same as padding-right */
+    height: 100%;
+    cursor: pointer;
+}
+
+.register {
+    font-family: 'WorkSans-Regular';
+    color: #025048;
+    font-weight: 800;
+}
+.register-title {
+    color: #025048;
+}
+
+.footer-index {
+    color: white;
+    font-family: 'PlayfairDisplay';
+    position: absolute;
+    bottom: 0;
+    right:0px;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #679691;
+}
+
+.nav-link.active:hover {
+    background-color: #025048;
+    color: white;
+    border: 2px solid #679691;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('/fonts/PlayfairDisplay-Regular.ttf')format('truetype');
+}
+
+@font-face {
+    font-family: 'WorkSans-Regular';
+    src: url('../fonts/worksans-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'WorkSans-Light';
+    src: url('/fonts/WorkSans-Light.ttf')format('truetype');
+}
+
+
+@font-face {
+    font-family: 'WorkSans-Bold';
+    src: url('/fonts/WorkSans-Bold.ttf')format('truetype');
+}

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AgriEnergyConnect.Models.Product>
+
+@using System.Text.Json
+@using (Html.BeginForm("Index", "Products", FormMethod.Get, new { id = "filterForm" }))
+{
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" />
+
+        <label for="productionDate">Production Date:</label>
+        <input type="date" id="productionDate" name="productionDate" />
+
+        <button type="submit">Apply Filters</button>
+    </div>
+}
+
+<h2>Products</h2>
+
+<table class="table" id="productTable">
+    <thead>
+        <tr>
+            <th>Farmer ID</th>
+            <th>Username</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Production Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.UserId</td>
+                <td>@product.Username</td>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.Category</td>
+                <td>@product.ProductionDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var allProducts = @Html.Raw(JsonSerializer.Serialize(Model));
+
+        $('#filterForm').submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+            var category = $('#category').val().toLowerCase();
+            var productionDate = $('#productionDate').val();
+
+            var filteredProducts = allProducts.filter(function (product) {
+                var matchesCategory = !category || product.Category.toLowerCase().includes(category);
+                var matchesDate = !productionDate || new Date(product.ProductionDate).toISOString().split('T')[0] === productionDate;
+                return matchesCategory && matchesDate;
+            });
+
+            var tbody = $('#productTable tbody');
+            tbody.empty(); // Clear existing rows
+
+            filteredProducts.forEach(function (product) {
+                var row = `<tr>
+                        <td>${product.UserId}</td>
+                        <td>${product.Username}</td>
+                        <td>${product.ProductId}</td>
+                        <td>${product.ProductName}</td>
+                        <td>${product.Category}</td>
+                        <td>${new Date(product.ProductionDate).toLocaleDateString()}</td>
+                    </tr>`;
+                tbody.append(row);
+            });
+        });
+    });
+</script>

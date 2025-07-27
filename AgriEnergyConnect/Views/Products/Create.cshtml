@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@model AgriEnergyConnect.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h1>Create Product</h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                @* Hidden input for the authenticated user's ID *@
+                <input type="hidden" asp-for="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+                <input type="hidden" asp-for="Username" value="@User.FindFirstValue(ClaimTypes.Email)" />
+
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" />
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category" class="control-label"></label>
+                    <input asp-for="Category" class="form-control" />
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductionDate" class="control-label"></label>
+                    <input asp-for="ProductionDate" class="form-control" />
+                    <span asp-validation-for="ProductionDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center mt-4">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <p>Please <a asp-area="Identity" asp-page="/Account/Login">login</a> to add new products.</p>
+}
+
+<style>
+    .btn-primary {
+        font-size: 1rem; /* Standard font size */
+        padding: 0.3rem 2rem; /* Adjust padding for thinner height and longer width */
+        border-radius: 0.25rem; /* Standard border radius */
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem; /* Add margin to move the button down */
+    }
+
+    .text-center {
+        text-align: center; /* Center align the button */
+    }
+</style>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
